@@ -73,6 +73,7 @@ Install the following tools (package names shown for Debian/Ubuntu):
 - **Inputs**
     - `pt1.mkv` — Disc 1 (Act I)
     - `pt2.mkv` — Disc 2 (Act II)
+
 Place them in the same directory as the script, or adjust variables in the script.
 
 - **Output**
