@@ -1,0 +1,30 @@
+# Output + temp work dirs
+roadshow_build/
+roadshow_tmp_hdr10/
+
+# Common large intermediates (just in case)
+*.hevc
+*.h265
+*.mka
+*.mks
+*.sup
+*.ac3
+*.eac3
+*.dts
+*.thd
+*.flac
+*.aac
+*.wav
+*.json
+
+# Final media (belt-and-suspenders)
+*.mkv
+
+# Editor/OS cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
