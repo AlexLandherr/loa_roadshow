@@ -63,7 +63,7 @@ Install the following tools (package names shown for Debian/Ubuntu):
   ```
 - **Utilities:** `jq`, `awk`, `sed`
   ```
-  sudo apt install jq gawk sed
+  sudo apt install jq awk sed
   ```
 - **dovi_tool** (to strip DV EL/RPU):
     - From source or prebuilt release: https://github.com/quietvoid/dovi_tool
@@ -73,7 +73,8 @@ Install the following tools (package names shown for Debian/Ubuntu):
 - **Inputs**
     - `pt1.mkv` — Disc 1 (Act I)
     - `pt2.mkv` — Disc 2 (Act II)
-    Place them in the same directory as the script, or adjust variables in the script.
+Place them in the same directory as the script, or adjust variables in the script.
+
 - **Output**
     - `./roadshow_build/Lawrence of Arabia (1962) {edition-Restored Roadshow Version}.mkv`
       (Change the `OUT` variable if you prefer a different Plex title.)
