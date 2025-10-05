@@ -7,6 +7,28 @@ The script preserves HDR10 metadata, fills the intermission gap cleanly, and rel
 
 > ✅ Verified working end-to-end on Debian 12 with VLC, mpv, and Plex (HDR10 passthrough).
 
+## Background: what is a “roadshow” presentation?
+In the mid-20th century, some prestige films opened as **roadshow presentations**: limited engagements with reserved seating, printed souvenir programs, and overture/entr’acte music, often with an **intermission** placed at a dramatic midpoint. These elements were designed to give the screening a theatrical, event-like character and to accommodate projection/reel changes in very long films (Wikipedia 2025a; Wikipedia 2025b).
+
+*Lawrence of Arabia* premiered in 1962 in just such a format. The original release ran for roughly 222 minutes **plus an overture, an intermission, and exit music**; subsequent restorations have likewise preserved the overture/intermission structure (Wikipedia 2025b). In home-media contexts, those elements may be omitted or separated unless deliberately reconstructed; this project re-creates the roadshow flow—**Overture → Act I → Intermission (black screen, no audio/subs) → Entr’acte → Act II**—inside a single, HDR10-compliant MKV to match the historical presentation (Wikipedia 2025a; Wikipedia 2025b).
+
+Roadshow engagements of epic features included overture, intermission, and entr’acte material, with the intermission intended as a short, scheduled pause. Contemporary exhibitor guidance reproduced by the Widescreen Museum specifies that “the length of an intermission should be between ten and fifteen minutes at most,” reflecting industry practice for reserved-seat roadshows of the period (Widescreen Museum, n.d.). Modern archival/repertory screenings of Lawrence of Arabia continue this convention; for example, TIFF lists its 70mm presentations of the film as including a 15-minute intermission (TIFF, 2024). This project’s default 600-second gap follows that norm.
+
+- Disc 1 of the linked-to Blu-ray contains the Overture (to black) → Act I → **INTERMISSION** card followed by end of Disc 1. It's duration (@ 24000/1001 fps) is ~2 hours 19 minutes 23 seconds.
+- Disc 2 of the linked-to Blu-ray contains the Entr'acte (to black) → Act II → End credits. It's duration (@ 24000/1001 fps) is ~1 hour 27 minutes 38 seconds.
+
+As such this projects default uses an Intermission of 10 minutes such that the final video duration is 3 hours 57 minutes 1 second.
+
+### References
+- Wikipedia (2025a) *Intermission (film)*. https://en.wikipedia.org/wiki/Intermission_(film)
+ (Accessed: 2025-10-05).
+- Wikipedia (2025b) *Lawrence of Arabia (film) — Release and restoration notes*. https://en.wikipedia.org/wiki/Lawrence_of_Arabia_(film)
+ (Accessed: 2025-10-05).
+- Widescreen Museum (n.d.) *Intermissions, Lounges and Foyers*. https://www.widescreenmuseum.com/sound/stereo20.htm
+ (Accessed: 2025-10-05).
+- TIFF (2024) *Lawrence of Arabia (70mm)*. https://tiff.net/events/lawrence-of-arabia
+ (Accessed: 2025-10-05).
+
 ## Features
 
 - **BL-only HDR10 video:** Demuxes Dolby Vision streams and keeps base layer (BL).
