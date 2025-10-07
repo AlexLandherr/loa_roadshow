@@ -16,6 +16,7 @@ roadshow_tmp_hdr10/
 *.aac
 *.wav
 *.json
+*.bin
 
 # Final media (belt-and-suspenders)
 *.mkv

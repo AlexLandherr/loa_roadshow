@@ -181,11 +181,20 @@ make_silence(){
 encode_to(){
   local in="$1" out="$2" fam="$3" sr="$4" ch="$5" br="${6:-}" sf="${7:-}"
   case "$fam" in
-    flac) if [[ -n "$sf" ]]; then
-            ffmpeg -nostdin -hide_banner -loglevel error -i "$in" -c:a flac -compression_level 12 -sample_fmt "$sf" -ar "$sr" -ac "$ch" "$out"
-          else
-            ffmpeg -nostdin -hide_banner -loglevel error -i "$in" -c:a flac -compression_level 12 -ar "$sr" -ac "$ch" "$out"
-          fi ;;
+    flac)
+      if [[ -n "$sf" ]]; then
+        # --- 24-bit mod: when using s32 pipeline, set bits_per_raw_sample=24 ---
+        local bpr=()
+        if [[ "$sf" == "s32" ]]; then bpr=( -bits_per_raw_sample 24 ); fi
+        ffmpeg -nostdin -hide_banner -loglevel error -i "$in" \
+          -c:a flac -compression_level 12 -sample_fmt "$sf" "${bpr[@]}" \
+          -ar "$sr" -ac "$ch" "$out"
+      else
+        ffmpeg -nostdin -hide_banner -loglevel error -i "$in" \
+          -c:a flac -compression_level 12 \
+          -ar "$sr" -ac "$ch" "$out"
+      fi
+      ;;
     ac3)  [[ -z $br ]] && br=$([[ $ch -ge 6 ]] && echo "640k" || echo "192k"); ffmpeg -nostdin -hide_banner -loglevel error -i "$in" -c:a ac3  -b:a "$br" -ar "$sr" -ac "$ch" "$out" ;;
     aac)  [[ -z $br ]] && br=$([[ $ch -ge 6 ]] && echo "384k" || echo "128k"); ffmpeg -nostdin -hide_banner -loglevel error -i "$in" -c:a aac  -b:a "$br" -ar "$sr" -ac "$ch" "$out" ;;
     pcm)  ffmpeg -nostdin -hide_banner -loglevel error -i "$in" -c:a pcm_s16le -ar "$sr" -ac "$ch" "$out" ;;
@@ -375,4 +384,3 @@ echo "==========================================="
 printf "Disc-1 duration (seam) : %d ms\n" "$DISC1_DUR_MS"
 printf "Intermission gap       : %d ms\n" "$GAP_MS"
 echo "Done."
-
